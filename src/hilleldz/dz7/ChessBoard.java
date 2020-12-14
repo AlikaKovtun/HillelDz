@@ -10,23 +10,18 @@ public class ChessBoard {
         int storona = scan.nextInt();
         StringBuilder chessBoard = new StringBuilder();
 
-        for (int i = 1; i <= storona; i += 1) {
-            if (i % 2 != 0) {
-                for (int j = 1; j <= storona/2; j += 1) {
-                    chessBoard.append("#");
-                    chessBoard.append(" ");
-                }
-            } else {
-                for (int j = 1; j <= storona/2; j += 1) {
-                    chessBoard.append(" ");
-                    chessBoard.append("#");
-                }
-
+        for (int i = 1; i <= storona; i++) {
+            for (int j = 1; j <= storona; j++) {
+                chessBoard.append(printChessBoard(i, j));
             }
             chessBoard.append("\n");
         }
         System.out.println(chessBoard);
 
+    }
+    public static String printChessBoard(int row, int cell) {
+        if ((row + cell) % 2 == 0) return "#";
+        else return " ";
     }
 }
 
