@@ -12,12 +12,12 @@ public class ChessBoard {
 
         for (int i = 1; i <= storona; i += 1) {
             if (i % 2 != 0) {
-                for (int j = 1; j <= storona; j += 1) {
+                for (int j = 1; j <= storona/2; j += 1) {
                     chessBoard.append("#");
                     chessBoard.append(" ");
                 }
             } else {
-                for (int j = 1; j < storona; j += 1) {
+                for (int j = 1; j <= storona/2; j += 1) {
                     chessBoard.append(" ");
                     chessBoard.append("#");
                 }
