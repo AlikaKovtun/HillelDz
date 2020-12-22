@@ -46,7 +46,8 @@ public class Account {
     }
 
     public void deposit(double sum) {
-        balance += sum;
+        if (sum < 0) System.out.println("Недопустимое значение!");
+        else balance += sum;
     }
 
     public void withdrawal(double sum) {
@@ -58,6 +59,6 @@ public class Account {
     }
 
     public void showBalance() {
-        System.out.println("На балансе " + customerName+ ": " + balance + "$");
+        System.out.println("На балансе " + customerName + ": " + balance + "$");
     }
 }

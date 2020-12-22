@@ -14,6 +14,7 @@ public class Main {
         ac2.setCustomerEmailAddress("LandoNorris@gmail.com");
         ac2.setCustomerPhoneNumber(904758493);
 
+        ac1.deposit(-10);
         ac1.deposit(1000);
         ac1.withdrawal(346.30);
         ac1.showBalance();
