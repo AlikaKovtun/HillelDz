@@ -15,9 +15,9 @@ public class MainPrinter {
 
 
         Printer printer2 = new Printer(false);
-        printer2.printPages(1245);
+        printer2.printPages(100);
         printer2.printerInfo();
-        printer2.tonerRefill(10);
+        printer2.tonerRefill(0.5);
         printer2.printerInfo();
 
 

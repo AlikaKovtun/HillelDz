@@ -14,7 +14,7 @@ public class Printer {
     public Printer(boolean isDuplex) {
         this.isDuplex = isDuplex;
         this.printedPages = 0;
-        this.tonerLevel = 100.0;
+        this.tonerLevel = TONER_MAX_LVL;
     }
 
     // Для уровня тонера нужен только геттер, так как мы не должны иметь возможност просто менять уровень,
@@ -51,29 +51,24 @@ public class Printer {
             System.out.println("Тонер заполнен на " + tonerLevel);
         }
     }
-    // Стояла задача "Реализовать уменьшение кол-ва тонера при печати листа c одной/двух сторон"
-    // На сколько я имею представление о печати принтера, тонер уменьшается одинаково не зависимо от того
-    // идет печать с двух сторон или с одной. Разный расход только бумаги. Точно так же и подсчет страниц
-    // происходит одинакого, ведь если принтер имеет возможность только односторонней печати, то он не перевочаивает лист,
-    // и таким образом не считает пустую страницу в напечатанные. Таким образом отличаться будет только количество
-    // напечатанных листов. Тоесть, если у меня есть электронная книга, в которой 100 листов, я запускаю ее на печать
-    // то логика работает так, как описано в методе ниже:
 
     public void printPages(int sheet) {
         if (sheet < 0) {
             System.out.println("Невозможно напечатать отрицательное количество листов!");
             return;
         }
-        int pages = sheet * 2;
-        printedPages += pages;
         if (isDuplex) {
             System.out.println("Запуск двусторонней печати...");
-            System.out.println("Печать завершена. Напечатано " + pages + " страниц, " + sheet + " листов.");
+            System.out.println("Печать завершена. Напечатано " + sheet * 2 + " страниц на " + sheet + " листах.");
+            tonerLevel -= TONER_PER_PAGE * (sheet * 2);
+            printedPages += sheet * 2;
         } else {
             System.out.println("Запуск односторонней печати...");
-            System.out.println("Печать завершена. Напечатано " + pages + " страниц, " + sheet * 2 + " листов.");
+            System.out.println("Печать завершена. Напечатано " + sheet + " страниц на " + sheet + " листах.");
+            tonerLevel -= TONER_PER_PAGE * sheet;
+            printedPages += sheet;
         }
-        tonerLevel -= TONER_PER_PAGE * pages;
+
     }
 
     public void printerInfo() {
