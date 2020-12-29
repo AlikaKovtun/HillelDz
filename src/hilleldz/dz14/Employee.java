@@ -1,16 +1,15 @@
 package hilleldz.dz14;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Employee {
     private String name;
     private String surname;
-    private Date birthday;
+    private LocalDate birthday;
     private String position;
-    Department department;
+    private Department department;
 
-    public Employee(String name, String surname, Date birthday, String position) {
+    public Employee(String name, String surname, LocalDate birthday, String position) {
         this.name = name;
         this.surname = surname;
         this.birthday = birthday;
@@ -33,11 +32,11 @@ public class Employee {
         this.surname = surname;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
@@ -54,13 +53,22 @@ public class Employee {
     }
 
     public void setDepartment(Department department) {
+         if(department==null) {
+             this.department = department;
+             return;
+         }
         this.department = department;
+        for (Employee emp : department.getEmployees()) {
+            if (emp != null && emp.getName().equals(name) && emp.getSurname().equals(surname)) {
+                return;
+            }
+        }
+            department.addEmployee(this);
     }
 
     @Override
     public String toString() {
-        SimpleDateFormat formater = new SimpleDateFormat("dd-MM-YYYY");
-        return name + " " + surname + " " + formater.format(birthday) + " " + position;
+        return name + " " + surname + " " + birthday + " " + position;
     }
 
 }
