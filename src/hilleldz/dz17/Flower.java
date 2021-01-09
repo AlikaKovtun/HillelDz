@@ -2,9 +2,11 @@ package hilleldz.dz17;
 
 public abstract class Flower {
 
+    private final String name;
     private double price;
 
-    public Flower(double price) {
+    public Flower(String name, double price) {
+        this.name = name;
         this.price = price;
     }
 
@@ -12,7 +14,8 @@ public abstract class Flower {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    @Override
+    public String toString() {
+        return name + "(" + price + ")";
     }
 }

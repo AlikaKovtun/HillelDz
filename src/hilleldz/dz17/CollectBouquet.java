@@ -25,13 +25,13 @@ public class CollectBouquet {
 
         switch (x) {
             case 1:
-                return new Lilac();
+                return new Lilac(27);
             case 2:
-                return new Carnation();
+                return new Carnation(10);
             case 3:
-                return new Rose();
+                return new Rose(45);
             default:
-                return new Tulip();
+                return new Tulip(20);
         }
     }
 
