@@ -9,8 +9,11 @@ public abstract class Character {
     }
 
      void fight() {
-        System.out.println(name + " бьет: ");
-        weapon.useWeapon();
+        if(weapon == null) System.out.println("Выберете оружие, которым хотите сражаться!");
+        else {
+            System.out.println(name + " бьет: ");
+            weapon.useWeapon();
+        }
     }
 
     public void setWeapon(WeaponBehavior w) {

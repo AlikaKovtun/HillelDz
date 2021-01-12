@@ -5,6 +5,7 @@ public class WarTest {
 
     public static void main(String[] args) {
         King king = new King();
+        king.fight();
         Knight knight = new Knight();
         Queen queen = new Queen();
         Troll troll = new Troll();
