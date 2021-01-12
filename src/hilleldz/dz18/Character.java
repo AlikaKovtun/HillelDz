@@ -1,9 +1,17 @@
 package hilleldz.dz18;
 
 public abstract class Character {
-    WeaponBehavior weapon;
+    private WeaponBehavior weapon;
+    private final String name;
 
-    abstract void fight();
+    public Character(String name) {
+        this.name = name;
+    }
+
+     void fight() {
+        System.out.println(name + " бьет: ");
+        weapon.useWeapon();
+    }
 
     public void setWeapon(WeaponBehavior w) {
         this.weapon = w;
